@@ -66,10 +66,12 @@ for tuple in tuples:
          prevloc=loc
          recd=1
        elif loc/prevloc > ColList[colcnt]+.1:
+         print 'InBlank'
          lineout = lineout + ','
          prevloc=prevloc*ColList[colcnt]
          #colcnt=colcnt+1
        elif loc/prevloc < ColList[colcnt]-.1:
+         print 'InAdditional'
          recd=1
       #elif loc/prevloc < ColList[colcnt]-.1
         
