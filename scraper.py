@@ -1,24 +1,69 @@
-# This is a template for a Python scraper on morph.io (https://morph.io)
-# including some code snippets below that you should find helpful
+import scraperwiki, urllib2
+import lxml
+import re
+import sys
 
-# import scraperwiki
-# import lxml.html
-#
-# # Read in a page
-# html = scraperwiki.scrape("http://foo.com")
-#
-# # Find something on the page using css selectors
-# root = lxml.html.fromstring(html)
-# root.cssselect("div[align='left']")
-#
-# # Write out to the sqlite database using scraperwiki library
-# scraperwiki.sqlite.save(unique_keys=['name'], data={"name": "susan", "occupation": "software developer"})
-#
-# # An arbitrary query against the database
-# scraperwiki.sql.select("* from data where 'name'='peter'")
+u=urllib2.urlopen("http://pilbaraports.com.au/Shipping_Schedule/Current_Shipping_Schedule.pdf")
+ 
+x=scraperwiki.pdftoxml(u.read())
+# Get Schedule Date
+Schedule_Date = re.search(r'jpg((.|\n)+)</text>', x).group(0)
+Schedule_Date = re.search(r'<b>(.*?)</b>', Schedule_Date).group(0).replace('<b>', '').replace('</b>', '').strip(' ')
+print Schedule_Date
 
-# You don't have to do things with the ScraperWiki and lxml libraries.
-# You can use whatever libraries you want: https://morph.io/documentation/python
-# All that matters is that your final data is written to an SQLite database
-# called "data.sqlite" in the current working directory which has at least a table
-# called "data".
+# Scan PDF
+test1 = re.search(r'Duty Helo:((.|\n)+)TIDES', x).group(0)
+#print test1
+
+tuples = re.findall(r'((left="|">)(.*?)(</text>|"))', test1.replace('<b>', '').replace('</b>', ''))
+#cnt=0
+#obj = ''
+#row=''
+lineout=''
+#headers=1
+headerrow=1
+#rcnt=1
+#hdcnt=0
+#HeadersList = []
+recflag = 0
+prevloc = 0
+#alignment=0
+#vesselflag=1
+Colcnt=0
+ColList = [0, 1.26,1.14,1.12,1.12,1.08,1.13,1.1,1.09,1.08,1.07,1.04,1.05];
+
+for tuple in tuples:
+
+  if headerrow=0:
+   if (num % 2) == 0:
+   # ojb
+     obj = tuple[2].strip(' ').replace(',', '')
+     recflag = 1
+   else:
+   # loc   
+     loc = int(tuple[2].strip(' '))
+     recflag = 0
+  
+  elif int(tuple[2].strip(' ')) > 975:
+    headerrow=0
+  
+  
+  # Record the Object
+  if recflag == 1:
+    if prevloc == 0:
+      lineout = lineout + obj + ','
+      colcnt=colcnt+1
+      prevloc=loc
+    else:
+      if loc/prevloc >= ColList[colcnt]+.01 and loc/prevloc <= ColList[colcnt]-.01:
+        lineout = lineout + obj + ','
+        colcnt=colcnt+1
+        prevloc=loc
+  
+  if colcnt == 14: 
+    print lineout[:-1]
+    colcnt=0
+    prevloc=0
+
+
+
