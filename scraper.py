@@ -30,6 +30,7 @@ prevloc = 0.0
 #alignment=0
 #vesselflag=1
 colcnt=0
+recd=0
 ColList = [0, 10.5, 1.26,1.14,1.12,1.12,1.08,1.13,1.1,1.09,1.08,1.07,1.04,1.05];
 
 for tuple in tuples:
@@ -57,15 +58,17 @@ for tuple in tuples:
       prevloc=loc
     else:
       print 'PrevLoc: ' + str(prevloc) + ' Loc: ' + str(loc) + ' Calc: ' + str(float(loc/prevloc)) + ' ListVal: ' + str(float(ColList[colcnt]))
-      if loc/prevloc >= ColList[colcnt]-.1 and loc/prevloc <= ColList[colcnt]+.1:
-        print 'AllOtherValidCols: ' + obj
-        lineout = lineout + obj + ','
-        colcnt=colcnt+1
-        prevloc=loc
-      elif loc/prevloc > ColList[colcnt]+.1:
-        lineout = lineout + ','
-        prevloc=prevloc*ColList[colcnt]
-        colcnt=colcnt+1
+      while recd==0: 
+       if loc/prevloc >= ColList[colcnt]-.1 and loc/prevloc <= ColList[colcnt]+.1:
+         print 'AllOtherValidCols: ' + obj
+         lineout = lineout + obj + ','
+         colcnt=colcnt+1
+         prevloc=loc
+         recd=1
+       elif loc/prevloc > ColList[colcnt]+.1:
+         lineout = lineout + ','
+         prevloc=prevloc*ColList[colcnt]
+         colcnt=colcnt+1
       #elif loc/prevloc < ColList[colcnt]-.1
         
     if colcnt == 14: 
