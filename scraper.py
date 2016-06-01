@@ -29,7 +29,7 @@ recflag = 0
 prevloc = 0
 #alignment=0
 #vesselflag=1
-Colcnt=0
+colcnt=0
 ColList = [0, 1.26,1.14,1.12,1.12,1.08,1.13,1.1,1.09,1.08,1.07,1.04,1.05];
 
 for tuple in tuples:
