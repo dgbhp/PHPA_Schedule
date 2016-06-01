@@ -26,7 +26,7 @@ runcnt=1
 #hdcnt=0
 #HeadersList = []
 recflag = 0
-prevloc = 0
+prevloc = 0.0
 #alignment=0
 #vesselflag=1
 colcnt=0
@@ -41,7 +41,7 @@ for tuple in tuples:
      recflag = 1
    else:
    # loc   
-     loc = int(tuple[2].strip(' '))
+     loc = float(tuple[2].strip(' '))
      recflag = 0
   
   elif runcnt==34:
@@ -50,7 +50,7 @@ for tuple in tuples:
   
   # Record the Object
   if recflag == 1:
-    if prevloc == 0:
+    if prevloc == 0.0:
       print 'Vessel: ' + obj
       lineout = lineout + obj + ','
       colcnt=colcnt+1
