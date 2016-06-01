@@ -64,12 +64,13 @@ for tuple in tuples:
         prevloc=loc
       elif loc/prevloc > ColList[colcnt]+.1:
         lineout = lineout + ','
-        colcnt=colcnt+1
         prevloc=prevloc*ColList[colcnt]
+        colcnt=colcnt+1
       #elif loc/prevloc < ColList[colcnt]-.1
         
     if colcnt == 14: 
       print lineout[:-1]
+      lineout=''
       colcnt=0
       prevloc=0
       runcnt=0
