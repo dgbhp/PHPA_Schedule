@@ -68,7 +68,9 @@ for tuple in tuples:
        elif loc/prevloc > ColList[colcnt]+.1:
          lineout = lineout + ','
          prevloc=prevloc*ColList[colcnt]
-         colcnt=colcnt+1
+         #colcnt=colcnt+1
+       elif loc/prevloc < ColList[colcnt]-.1:
+         recd=1
       #elif loc/prevloc < ColList[colcnt]-.1
         
     if colcnt == 14: 
