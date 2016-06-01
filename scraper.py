@@ -37,11 +37,9 @@ for tuple in tuples:
   if headerrow==0:
    if (runcnt % 2) == 0:
    # ojb
-     print 'INobj'
      obj = tuple[2].strip(' ').replace(',', '')
      recflag = 1
    else:
-     print 'INloc'
    # loc   
      loc = int(tuple[2].strip(' '))
      recflag = 0
@@ -52,13 +50,14 @@ for tuple in tuples:
   
   # Record the Object
   if recflag == 1:
-    print 'INrecfunction'
     if prevloc == 0:
+      print 'Prevloc: ' + obj
       lineout = lineout + obj + ','
       colcnt=colcnt+1
       prevloc=loc
     else:
       if loc/prevloc >= ColList[colcnt]+.01 and loc/prevloc <= ColList[colcnt]-.01:
+        print 'AllOtherValidCols: ' + obj
         lineout = lineout + obj + ','
         colcnt=colcnt+1
         prevloc=loc
