@@ -62,11 +62,11 @@ for tuple in tuples:
         colcnt=colcnt+1
         prevloc=loc
   
-  if colcnt == 14: 
-    print lineout[:-1]
-    colcnt=0
-    prevloc=0
-    runcnt=0
+    if colcnt == 14: 
+      print lineout[:-1]
+      colcnt=0
+      prevloc=0
+      runcnt=0
 
-runcnt=runcnt+1
+  runcnt=runcnt+1
 
