@@ -51,11 +51,12 @@ for tuple in tuples:
   # Record the Object
   if recflag == 1:
     if prevloc == 0:
-      print 'Prevloc: ' + obj
+      print 'Vessel: ' + obj
       lineout = lineout + obj + ','
       colcnt=colcnt+1
       prevloc=loc
     else:
+      print 'PrevLoc: ' + str(prevloc) + ' Loc: ' + str(loc) + ' Calc: ' + str(loc/prevloc)
       if loc/prevloc >= ColList[colcnt]+.01 and loc/prevloc <= ColList[colcnt]-.01:
         print 'AllOtherValidCols: ' + obj
         lineout = lineout + obj + ','
