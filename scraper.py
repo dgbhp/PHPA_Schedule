@@ -56,7 +56,7 @@ for tuple in tuples:
       colcnt=colcnt+1
       prevloc=loc
     else:
-      print 'PrevLoc: ' + str(prevloc) + ' Loc: ' + str(loc) + ' Calc: ' + str(loc/prevloc)
+      print 'PrevLoc: ' + str(prevloc) + ' Loc: ' + str(loc) + ' Calc: ' + str(float(loc/prevloc)) + ' ListVal: ' + str(float(ColList[colcnt]))
       if loc/prevloc >= ColList[colcnt]+.01 and loc/prevloc <= ColList[colcnt]-.01:
         print 'AllOtherValidCols: ' + obj
         lineout = lineout + obj + ','
