@@ -22,7 +22,7 @@ tuples = re.findall(r'((left="|">)(.*?)(</text>|"))', test1.replace('<b>', '').r
 lineout=''
 #headers=1
 headerrow=1
-#rcnt=1
+runcnt=1
 #hdcnt=0
 #HeadersList = []
 recflag = 0
@@ -35,7 +35,7 @@ ColList = [0, 1.26,1.14,1.12,1.12,1.08,1.13,1.1,1.09,1.08,1.07,1.04,1.05];
 for tuple in tuples:
 
   if headerrow==0:
-   if (num % 2) == 0:
+   if (runcnt % 2) == 0:
    # ojb
      obj = tuple[2].strip(' ').replace(',', '')
      recflag = 1
@@ -44,8 +44,8 @@ for tuple in tuples:
      loc = int(tuple[2].strip(' '))
      recflag = 0
   
-  elif int(tuple[2].strip(' ')) > 975:
-    headerrow=0
+  elif runcnt==14:
+    headerrow=1
   
   
   # Record the Object
@@ -64,6 +64,7 @@ for tuple in tuples:
     print lineout[:-1]
     colcnt=0
     prevloc=0
+    runcnt=0
 
-
+runcnt=runcnt+1
 
