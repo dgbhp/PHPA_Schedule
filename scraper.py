@@ -63,7 +63,7 @@ for tuple in tuples:
         colcnt=colcnt+1
         prevloc=loc
       elif loc/prevloc > ColList[colcnt]+.1
-        lineout = lineout + obj + ','
+        lineout = lineout + ','
         colcnt=colcnt+1
         prevloc=prevloc*ColList[colcnt]
       #elif loc/prevloc < ColList[colcnt]-.1
