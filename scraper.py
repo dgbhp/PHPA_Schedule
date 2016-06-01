@@ -33,8 +33,6 @@ colcnt=0
 ColList = [0, 1.26,1.14,1.12,1.12,1.08,1.13,1.1,1.09,1.08,1.07,1.04,1.05];
 
 for tuple in tuples:
- 
-  print runcnt
 
   if headerrow==0:
    if (runcnt % 2) == 0:
