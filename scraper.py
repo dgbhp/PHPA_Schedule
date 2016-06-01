@@ -62,7 +62,7 @@ for tuple in tuples:
         lineout = lineout + obj + ','
         colcnt=colcnt+1
         prevloc=loc
-      elif loc/prevloc > ColList[colcnt]+.1
+      elif loc/prevloc > ColList[colcnt]+.1:
         lineout = lineout + ','
         colcnt=colcnt+1
         prevloc=prevloc*ColList[colcnt]
