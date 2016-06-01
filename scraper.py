@@ -59,7 +59,7 @@ for tuple in tuples:
     else:
       while recd==0:
        print 'PrevLoc: ' + str(prevloc) + ' Loc: ' + str(loc) + ' Calc: ' + str(float(loc/prevloc)) + ' ListVal: ' + str(float(ColList[colcnt]))
-       if loc/prevloc >= ColList[colcnt]-.1 and loc/prevloc <= ColList[colcnt]+.1:
+       if loc/prevloc >= ColList[colcnt]-.01 and loc/prevloc <= ColList[colcnt]+.01:
          print 'AllOtherValidCols: ' + obj
          lineout = lineout + obj + ','
          colcnt=colcnt+1
