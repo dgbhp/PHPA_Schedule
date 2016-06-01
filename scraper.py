@@ -73,8 +73,10 @@ for tuple in tuples:
        elif loc/prevloc < ColList[colcnt]-.1:
          print 'InAdditional'
          recd=1
-      #elif loc/prevloc < ColList[colcnt]-.1
-        
+
+      # Reset Record recorded Flag     
+      recd=0      
+      
     if colcnt == 14: 
       print lineout[:-1]
       lineout=''
