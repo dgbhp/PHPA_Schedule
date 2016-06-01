@@ -44,7 +44,7 @@ for tuple in tuples:
      loc = int(tuple[2].strip(' '))
      recflag = 0
   
-  elif runcnt==32:
+  elif runcnt==34:
     headerrow=0
   
   
